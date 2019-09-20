@@ -6,19 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class start : MonoBehaviour
 {
-    void Start()
+    private AudioSource audioSource;
+    public AudioClip buttonSE;
+    private void Start()
     {
-       
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
-   
-    
-    void Update()
+    public void OnAsobikataButtonClicked()
     {
-        
+        audioSource.PlayOneShot(buttonSE);
+        Invoke("loadscene", 1);
     }
-    public void OnRetry()
+    public void loadscene()
     {
-        SceneManager.LoadScene("main");
+        SceneManager.LoadScene("main"); //シーン切り替え
     }
 }
 

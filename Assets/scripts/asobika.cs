@@ -6,18 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class asobika : MonoBehaviour
 {
-    void Start()
+    private AudioSource audioSource;
+    public AudioClip buttonSE;
+    private void Start()
     {
-        
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
-
-    void Update()
+    public void OnAsobikataButtonClicked()
     {
-        
+        audioSource.PlayOneShot(buttonSE);
+        Invoke("loadscene", 1);
+    }
+    public void loadscene()
+    {
+        SceneManager.LoadScene("asobika"); //シーン切り替え
     }
     
-    public void OnRetry()
-    {
-        SceneManager.LoadScene("asobika");
-    }
 }
